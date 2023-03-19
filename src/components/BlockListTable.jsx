@@ -28,7 +28,7 @@ const BlockListTable = ({ blocks }) => {
 									{/* <th>Fee Recipient</th> */}
 									<th>{parseInt(block?.gasUsed?._hex).toLocaleString()}</th>
 									<th>{parseInt(block?.gasLimit?._hex).toLocaleString()}</th>
-									<th>{(parseInt(block?.baseFeePerGas?._hex) / (10 ** 9)).toFixed(2)} Gwei</th>
+									<th>{(parseInt(block?.baseFeePerGas?._hex) / 10 ** 9).toFixed(2)} Gwei</th>
 								</tr>
 							);
 						})}

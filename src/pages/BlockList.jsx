@@ -19,13 +19,14 @@ const BlockList = () => {
 	const getBlocks = async () => {
 		const blocks = [];
 		const start = lastBlock - 10;
-		console.log("start", start)
-		console.log("lastBlock", lastBlock)
+		console.log('start', start);
+		console.log('lastBlock', lastBlock);
 		for (let i = start; i <= lastBlock; i++) {
 			const block = await alchemy.core.getBlockWithTransactions(i);
 			blocks.push(block);
 		}
 		setBlocks(blocks);
+		setLoading(false);
 	};
 
 	useEffect(() => {
@@ -49,7 +50,11 @@ const BlockList = () => {
 					<Search />
 				</div>
 				<div className="mt-10">
-					<BlockListTable blocks={blocks} />
+					{loading ? (
+						<div className="text-center w-full text-white">Loading...</div>
+					) : (
+						<BlockListTable blocks={blocks} />
+					)}
 				</div>
 			</div>
 		</Layout>
